@@ -94,6 +94,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\GGK_WaveRock_FloorPlan_Phase-I.jpg" />
+    <Content Include="img\GGK_WaveRock_FloorPlan_Phase-II.jpg" />
+    <Content Include="img\location.svg" />
     <Content Include="img\logo2.png" />
     <Content Include="js\app\views\Locator.js" />
     <Content Include="js\lib\events.js" />
@@ -153,8 +156,6 @@
     <Content Include="pics\Eugene_Lee50.jpg" />
     <Content Include="pics\Gary_Donovan.jpg" />
     <Content Include="pics\Gary_Donovan50.jpg" />
-    <Content Include="pics\GGK_WaveRock_FloorPlan_Phase-I.jpg" />
-    <Content Include="pics\GGK_WaveRock_FloorPlan_Phase-II.jpg" />
     <Content Include="pics\John_Williams.jpg" />
     <Content Include="pics\John_Williams50.jpg" />
     <Content Include="pics\Julie_Taylor.jpg" />
