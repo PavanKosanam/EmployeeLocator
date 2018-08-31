@@ -58,7 +58,7 @@ define(function (require) {
                 data: { Id: id },
                 success: function (response) {
                     $.each(response.Data, function (i, x) {
-                        employees = createEmployeeModel(x);
+                        employees.push(createEmployeeModel(x));
                     });
                     l = employees.length;
                     for (i = 0; i < l; i = i + 1) {
@@ -84,8 +84,8 @@ define(function (require) {
         },
 
         createEmployeeModel = function (x) {
-            var fn = x.FirstName.toLowerCase().replace(/[^A-Z0-9]+/ig, ''), ln = x.LastName.toLowerCase().replace(/[^A-Z0-9]+/ig, '');
-            var pic = urlExists('/pics/' + fn + '_' + ln + '.jpg') ? fn + '_' + ln + '.jpg' : (x.FirstName.endsWith('a') || x.FirstName.endsWith('i')) ? 'roja_mule.jpg' : 'pavan_kosanam.jpg';
+            var fn = x.FirstName ? x.FirstName.toLowerCase().replace(/[^A-Z0-9]+/ig, '') : null, ln = x.LastName ? x.LastName.toLowerCase().replace(/[^A-Z0-9]+/ig, '') : null;
+            var pic = fn && ln ? urlExists('/pics/' + fn + '_' + ln + '.jpg') ? fn + '_' + ln + '.jpg' : (x.FirstName.endsWith('a') || x.FirstName.endsWith('i')) ? 'roja_mule.jpg' : 'pavan_kosanam.jpg' : 'Meeting_Room.jpg';
             return {
                 id: x.ID,
                 name: x.Name,

@@ -3,7 +3,18 @@
         <img src="pics/<%= firstName %>_<%= lastName %>.jpg" width="160" height="160"/>
         <a class="btn btn-primary" style="margin-left:50px;" href="#locator/<%= id %>">Locate in Floor</a>
     </p>
-    <h3><%= name %> <%= lastName %></h3>
+    <%
+    if (firstName)
+    {
+    %>
+    <h3><%= firstName %> <%= lastName %></h3>
+    <%
+    }
+    else {    %>
+    <h3><%= name %></h3>
+    <%
+    }
+    %>
     <h4><%= title %></h4>
     <br>
     <table class="table table-striped">
