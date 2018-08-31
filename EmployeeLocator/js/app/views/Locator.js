@@ -41,7 +41,38 @@ define(function (require) {
                     }
                 }
             };
-            this._employeeList = [{ empId: 1, name: 'Supraja', width: 265, height: 1416 }, { empId: 2, name: 'Hajera', width: 3507, height: 1110 }];
+            this._employeeList = [
+                { id: 2, name: 'Hajera', width: 3507, height: 1110 },
+                { id: 25, name: 'C-27', width: 90, height: 1510 },
+                { id: 26, name: 'C-28', width: 90, height: 1400 },
+                { id: 27, name: 'C-29', width: 90, height: 1200 },
+                { id: 28, name: 'C-42', width: 2320, height: 640 },
+                { id: 29, name: 'P-63', width: 980, height: 1000 },
+                { id: 30, name: 'C-10', width: 3190, height: 1075 },
+                { id: 445, name: 'Tejaswini Battini', width: 265, height: 1185 },
+                { id: 544, name: 'Phani Vihari Iduri', width: 470, height: 1415 },
+                { id: 629, name: 'Somya Padhi', width: 360, height: 1260 },
+                { id: 698, name: 'Sudheer Manchikanti', width: 360, height: 1185 },
+                { id: 715, name: 'Chandana Kamishetty', width: 664, height: 1185 },
+                { id: 769, name: 'Divyasri Nalla', width: 570, height: 1185 },
+                { id: 772, name: 'Roja Mule', width: 570, height: 1340 },
+                { id: 797, name: 'Archana Chennadi', width: 370, height: 1515 },
+                { id: 810, name: 'Pavani Ulchala', width: 664, height: 1340 },
+                { id: 946, name: 'Ahammad Mulinti', width: 293, height: 1515 },
+                { id: 979, name: 'Supraja Ganji', width: 265, height: 1415 },
+                { id: 1032, name: 'Vinay Potnuru', width: 523, height: 1515 },
+                { id: 1042, name: 'Sneha Molugu', width: 470, height: 1185 },
+                { id: 1175, name: 'Bojareddy Gaddam', width: 445, height: 1515 },
+                { id: 1219, name: 'Santhi Arimanda', width: 265, height: 1260 },
+                { id: 1253, name: 'Bhavya Kanuboddu', width: 675, height: 1515 },
+                { id: 1498, name: 'Manjula Merin', width: 360, height: 1340 },
+                { id: 1602, name: 'Ankit Chaurasia', width: 664, height: 1415 },
+                { id: 1694, name: 'Srikanth Parepally', width: 664, height: 1260 },
+                { id: 1718, name: 'Pavan Kosanam', width: 265, height: 1340 },
+                { id: 1992, name: 'Pradeep Nallu', width: 600, height: 1515 },
+                { id: 2059, name: 'Bhanuprasad Gollapudi', width: 570, height: 1260 },
+                { id: 2112, name: 'Praveen Pasupuleti', width: 570, height: 1415 },
+            ];
         },
 
         _imageLoaded: function (shape) {
@@ -50,6 +81,7 @@ define(function (require) {
             var params = { fullscreen: false, autostart: true };
 
             this._two = new Two(params).appendTo(elem);
+            this._svg = Two.SVGRenderer.Utils;
             this._group = new Two.Group();
 
             this._resize(this);
@@ -74,8 +106,8 @@ define(function (require) {
             this._setRendererSize();
             var image = this._getImage();
             var rv = this._getResponsiveValue(image.width), rvpx = (rv * 10), r = (rvpx / 2);
-            var source = this._findEmployee(1);
-            var destination = this._findEmployee(2);
+            var source = this._findEmployee(979);
+            var destination = this._findEmployee(28);//28//445
             var rePosPaths = JSON.parse(JSON.stringify(this._imageDimensions.waverock.phaseII.path));
             Two.Utils.each(rePosPaths, function (path, index, parent) {
                 path.from = self._rePositionShape(path.from);
@@ -85,7 +117,7 @@ define(function (require) {
             //this._drawCurve(this._drawPoint(source.width, source.height), this._drawPoint(destination.width, destination.height), 'transparent', this._colors.PeterRiver);
             //this._drawLine(source.width, source.height, destination.width, destination.height, 'transparent', this._colors.PeterRiver);
             this._drawCircle(source.width, source.height, (r - rv), this._colors.Emerald, this._colors.Emerald);
-            this._insertText(source.name, source.width, (image.height - source.height) > 100 ? source.height + r : source.height - r, this._colors.SoftPink);
+            this._insertText(source.name, source.width, (image.height - source.height) > 100 ? source.height + r : source.height - r, this._colors.SoftPink, null, { 'background-color': 'white' });
             this._drawCircle(destination.width, destination.height, (r - rv), this._colors.Sunred, this._colors.Sunred);
             this._insertText(destination.name, destination.width, (image.height - destination.height) > 100 ? destination.height + r : destination.height - r, this._colors.SoftPink);
             this._two.add(this._group);
@@ -279,7 +311,7 @@ define(function (require) {
             //    Two.Utils.each([path.from, path.to], function (bipath, index, parent) {
             //        var wnewdiff = Math.abs(target['width'] - bipath['width']);
             //        var hnewdiff = Math.abs(target['height'] - bipath['height']);
-            //        if (wnewdiff < wdiff || (wnewdiff <= wdiff && hnewdiff <= hdiff)) { //(wnewdiff < wdiff && hnewdiff <= hdiff) // wnewdiff < wdiff || (hnewdiff < hdiff && hnewdiff < wdiff)
+            //        if (wnewdiff < wdiff || hnewdiff < hdiff || (wnewdiff == wdiff && hnewdiff == hdiff)) { //(wnewdiff < wdiff && hnewdiff <= hdiff) // wnewdiff < wdiff || (hnewdiff < hdiff && hnewdiff < wdiff)
             //            wdiff = wnewdiff;
             //            hdiff = hnewdiff;
             //            closest = bipath;
@@ -297,13 +329,13 @@ define(function (require) {
             this._removeFromArray(availPaths, sclst.closestPath);
             var dclst = this._getClosestPath([sclst.closestPath], destination);
             choosenPath.push(_.extend(sclst.closestPath, { closest: dclst.closest }));
-            var wdiff = Math.abs(destination.width - dclst.closest.width);
-            var hdiff = Math.abs(destination.height - dclst.closest.height);
-            for (var i = 0; i < availPaths.length && (wdiff < this._prevwdiff); i++) {
-            //for (var i = 0; i < availPaths.length && (wdiff < this._prevwdiff || (wdiff <= this._prevwdiff && (hdiff !== this._prevhdiff || wdiff !== this._prevwdiff))) ; i++) {
-            //for (var i = 0; i < availPaths.length && wdiff <= this._prevwdiff && wdiff >= 100; i++) {
+            var wnewdiff = Math.abs(destination.width - dclst.closest.width);
+            var hnewdiff = Math.abs(destination.height - dclst.closest.height);
+            for (var i = 0; i < availPaths.length && (wnewdiff < this._prevwdiff); i++) {// || (wnewdiff == this._prevwdiff && hnewdiff == this._prevhdiff) // && (wnewdiff >= 50 || hnewdiff >= 50)
+            //for (var i = 0; i < availPaths.length && (wnewdiff < this._prevwdiff || (wnewdiff <= this._prevwdiff && (hnewdiff !== this._prevhdiff || wnewdiff !== this._prevwdiff))) ; i++) {
+            //for (var i = 0; i < availPaths.length && wnewdiff <= this._prevwdiff && wnewdiff >= 100; i++) {
                 //var isExist = _.first(_.filter(choosenPath, function (cp) { return cp.from === dclst.closestPath.from && cp.to === dclst.closestPath.to; }));
-                this._prevwdiff = wdiff; this._prevhdiff = hdiff;
+                this._prevwdiff = wnewdiff; this._prevhdiff = hnewdiff;
                 this._getChoosenPath(availPaths, dclst.closest, destination, choosenPath);
             }
         },
@@ -401,7 +433,7 @@ define(function (require) {
         },
 
         _findEmployee: function (employeeId) {
-            var employee = _.clone(_.first(_.filter(this._employeeList, function (emp) { return emp.empId === employeeId; })));
+            var employee = _.clone(_.first(_.filter(this._employeeList, function (emp) { return emp.id === employeeId; })));
             var rePositioned = this._rePositionShape(employee);
             _.extend(employee, rePositioned);
             return employee;
@@ -417,6 +449,7 @@ define(function (require) {
 
         _addToGroup: function (shape) {
             this._group.add(shape);
+            this._two.update();
         },
 
         _insertText: function (message, x, y, fill, stroke, styles) {
@@ -425,6 +458,20 @@ define(function (require) {
             if (stroke) text.stroke = stroke;
             text.linewidth = 1;
             this._addToGroup(text);
+
+            var filterId = 'f-' + message.replace(/[^A-Z0-9]+/ig, '');
+            var filter = this._svg.createElement('filter', {
+                id: filterId, x: 0, y: 0, height: 1, width: 1
+            });
+            var turbulence = this._svg.createElement('feFlood', { floodColor: 'white' });
+            var displacement = this._svg.createElement('feComposite', { in: 'SourceGraphic' });
+            filter.appendChild(turbulence);
+            filter.appendChild(displacement);
+            this._two.renderer.defs.appendChild(filter);
+
+            this._svg.setAttributes(text._renderer.elem, {
+                filter: 'url(#' + filterId + ')'
+            });
         },
 
         _drawPoint: function (x, y) {
