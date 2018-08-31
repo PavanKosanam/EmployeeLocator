@@ -18,7 +18,8 @@ define(function (require) {
             return this;
         },
 
-        initialize: function () {
+        initialize: function (options) {
+            this._id = options.id;
             this._colors = { Turquoise: '#1abc9c', GreenSea: '#16a085', Emerald: '#2ecc71', Nephritis: '#27ae60', PeterRiver: '#3498db', BelizeHole: '#2980b9', Amethyst: '#9b59b6', Wisteria: '#8e44ad', WetAsphalt: '#34495e', MidnightBlue: '#2c3e50', Sunflower: '#f1c40f', Orange: '#f39c12', Carrot: '#e67e22', Pumpkin: '#d35400', Sunred: '#e74c3c', SoftPink: '#f02075', GgkOrange: '#D35106', GgkBlue: '#00628b' };
             this._imageDimensions = {
                 waverock: {
@@ -73,6 +74,33 @@ define(function (require) {
                 { id: 2059, name: 'Bhanuprasad Gollapudi', width: 570, height: 1260 },
                 { id: 2112, name: 'Praveen Pasupuleti', width: 570, height: 1415 },
             ];
+
+            this._positions = [
+                { id: 1, name: 'GGKU3/WS/P2/087', availability: true, width: 664, height: 1185 },
+                { id: 2, name: 'GGKU3/WS/P2/088', availability: true, width: 664, height: 1260 },
+                { id: 3, name: 'GGKU3/WS/P2/089', availability: true, width: 664, height: 1340 },
+                { id: 4, name: 'GGKU3/WS/P2/090', availability: true, width: 664, height: 1415 },
+                { id: 5, name: 'GGKU3/WS/P2/091', availability: true, width: 570, height: 1415 },
+                { id: 6, name: 'GGKU3/WS/P2/092', availability: true, width: 570, height: 1340 },
+                { id: 7, name: 'GGKU3/WS/P2/093', availability: true, width: 570, height: 1260 },
+                { id: 8, name: 'GGKU3/WS/P2/094', availability: true, width: 570, height: 1185 },
+                { id: 9, name: 'GGKU3/WS/P2/095', availability: true, width: 470, height: 1185 },
+                { id: 10, name: 'GGKU3/WS/P2/098', availability: true, width: 470, height: 1415 },
+                { id: 11, name: 'GGKU3/WS/P2/099', availability: false, width: 360, height: 1415 },
+                { id: 12, name: 'GGKU3/WS/P2/0100', availability: true, width: 360, height: 1340 },
+                { id: 13, name: 'GGKU3/WS/P2/0101', availability: true, width: 360, height: 1260 },
+                { id: 14, name: 'GGKU3/WS/P2/0102', availability: true, width: 360, height: 1185 },
+                { id: 15, name: 'GGKU3/WS/P2/0103', availability: true, width: 265, height: 1185 },
+                { id: 16, name: 'GGKU3/WS/P2/0104', availability: true, width: 265, height: 1260 },
+                { id: 17, name: 'GGKU3/WS/P2/0105', availability: true, width: 265, height: 1340 },
+                { id: 18, name: 'GGKU3/WS/P2/0106', availability: true, width: 265, height: 1415 },
+                { id: 19, name: 'GGKU3/WS/P2/0107', availability: true, width: 293, height: 1515 },
+                { id: 20, name: 'GGKU3/WS/P2/0108', availability: true, width: 370, height: 1515 },
+                { id: 21, name: 'GGKU3/WS/P2/0109', availability: true, width: 445, height: 1515 },
+                { id: 22, name: 'GGKU3/WS/P2/0110', availability: true, width: 523, height: 1515 },
+                { id: 23, name: 'GGKU3/WS/P2/0111', availability: true, width: 600, height: 1515 },
+                { id: 24, name: 'GGKU3/WS/P2/0112', availability: true, width: 675, height: 1515 },
+            ];
         },
 
         _imageLoaded: function (shape) {
@@ -92,22 +120,25 @@ define(function (require) {
 
                }).play();
             //this._two.update();
+
             document.onmousemove = function (e) {
                 var x = e.pageX;
                 var y = e.pageY;
-                //e.target.title = "X is " + x + " and Y is " + y;
                 $('#mouseposition').text("pageX: " + e.pageX + " pageY: " + e.pageY + ", clientX: " + e.clientX + " clientY: " + e.clientY + ", screenX: " + e.screenX + " screenY: " + e.screenY + ", x: " + e.x + " y: " + e.y + ", layerX: " + e.layerX + " layerY: " + e.layerY + ", offsetX: " + e.offsetX + " offsetY: " + e.offsetY);
             };
         },
 
         _resize: function (x, y) {
+            if (!this._id) return;
+            var targetEmpId = Number(this._id);
             var self = this;
             this._destroyAll();
             this._setRendererSize();
             var image = this._getImage();
             var rv = this._getResponsiveValue(image.width), rvpx = (rv * 10), r = (rvpx / 2);
-            var source = this._findEmployee(979);
-            var destination = this._findEmployee(28);//28//445
+            var source = this._findEmployee(1718);
+            var destination = this._findEmployee(targetEmpId);//28//715
+            if (!source || !destination) return;
             var rePosPaths = JSON.parse(JSON.stringify(this._imageDimensions.waverock.phaseII.path));
             Two.Utils.each(rePosPaths, function (path, index, parent) {
                 path.from = self._rePositionShape(path.from);
@@ -236,6 +267,9 @@ define(function (require) {
                         if (JSON.stringify(actualclosest) !== JSON.stringify(cpath)) {
                             from = actualclosest;
                         }
+                        else if (JSON.stringify(from) === JSON.stringify(actualclosest) && path.from.width === previousPath.width && path.from.height !== previousPath.height) {
+                            self._drawCurve(self._drawPoint(previousPath.width, previousPath.height), self._drawPoint(cpath.width, cpath.height), 'transparent', self._colors.PeterRiver);
+                        }
                     }
                     inbtw = self._closest(self._generateInBetweenPath(from, to), from, to);
                     self._drawCurve(self._drawPoint(from.width, from.height), self._drawPoint(inbtw.width, inbtw.height), 'transparent', self._colors.PeterRiver);
@@ -247,7 +281,6 @@ define(function (require) {
                         }
                     }
                     else if (index == (choosenPath.length - 1)) {
-
                     }
                 }
                 else {
@@ -311,7 +344,7 @@ define(function (require) {
             //    Two.Utils.each([path.from, path.to], function (bipath, index, parent) {
             //        var wnewdiff = Math.abs(target['width'] - bipath['width']);
             //        var hnewdiff = Math.abs(target['height'] - bipath['height']);
-            //        if (wnewdiff < wdiff || hnewdiff < hdiff || (wnewdiff == wdiff && hnewdiff == hdiff)) { //(wnewdiff < wdiff && hnewdiff <= hdiff) // wnewdiff < wdiff || (hnewdiff < hdiff && hnewdiff < wdiff)
+            //        if (wnewdiff < wdiff || (wnewdiff == wdiff && hnewdiff == hdiff)) { //(wnewdiff < wdiff && hnewdiff <= hdiff) // wnewdiff < wdiff || (hnewdiff < hdiff && hnewdiff < wdiff)
             //            wdiff = wnewdiff;
             //            hdiff = hnewdiff;
             //            closest = bipath;
@@ -331,9 +364,9 @@ define(function (require) {
             choosenPath.push(_.extend(sclst.closestPath, { closest: dclst.closest }));
             var wnewdiff = Math.abs(destination.width - dclst.closest.width);
             var hnewdiff = Math.abs(destination.height - dclst.closest.height);
-            for (var i = 0; i < availPaths.length && (wnewdiff < this._prevwdiff); i++) {// || (wnewdiff == this._prevwdiff && hnewdiff == this._prevhdiff) // && (wnewdiff >= 50 || hnewdiff >= 50)
-            //for (var i = 0; i < availPaths.length && (wnewdiff < this._prevwdiff || (wnewdiff <= this._prevwdiff && (hnewdiff !== this._prevhdiff || wnewdiff !== this._prevwdiff))) ; i++) {
-            //for (var i = 0; i < availPaths.length && wnewdiff <= this._prevwdiff && wnewdiff >= 100; i++) {
+            for (var i = 0; i < availPaths.length && (wnewdiff < this._prevwdiff) ; i++) {// || (wnewdiff == this._prevwdiff && hnewdiff == this._prevhdiff) // && (wnewdiff >= 50 || hnewdiff >= 50)
+                //for (var i = 0; i < availPaths.length && (wnewdiff < this._prevwdiff || (wnewdiff <= this._prevwdiff && (hnewdiff !== this._prevhdiff || wnewdiff !== this._prevwdiff))) ; i++) {
+                //for (var i = 0; i < availPaths.length && wnewdiff <= this._prevwdiff && wnewdiff >= 100; i++) {
                 //var isExist = _.first(_.filter(choosenPath, function (cp) { return cp.from === dclst.closestPath.from && cp.to === dclst.closestPath.to; }));
                 this._prevwdiff = wnewdiff; this._prevhdiff = hnewdiff;
                 this._getChoosenPath(availPaths, dclst.closest, destination, choosenPath);
@@ -403,14 +436,14 @@ define(function (require) {
 
         _destroyAll: function () {
             var self = this;
-            Two.Utils.each(this._group.children, function (child, a, i) {
+            Two.Utils.each(this._group.children, function (child, index, parent) {
                 self._group.children.splice(child, 1);
             });
-            Two.Utils.each(this._two.scene.children, function (child, a, i) {
+            Two.Utils.each(this._two.scene.children, function (child, index, parent) {
                 self._two.scene.children.splice(child, 1);
             });
-            Two.Utils.each(this._two.renderer.defs.children, function (child, a, i) {
-                self._two.renderer.defs.children.splice(child, 1);
+            Two.Utils.each(this._two.renderer.defs.children, function (child, index, parent) {
+                self._two.renderer.defs.children[0].remove();
             });
             this._two.update();
         },
@@ -430,15 +463,16 @@ define(function (require) {
 
         _setRendererSize: function () {
             var image = this._getImage();
-            this._two.width = image.width;
-            this._two.height = image.height;
-            this._two.renderer.setSize(image.width, image.height);
+            if (image) {
+                this._two.width = image.width;
+                this._two.height = image.height;
+                this._two.renderer.setSize(image.width, image.height);
+            }
         },
 
         _findEmployee: function (employeeId) {
             var employee = _.clone(_.first(_.filter(this._employeeList, function (emp) { return emp.id === employeeId; })));
-            var rePositioned = this._rePositionShape(employee);
-            _.extend(employee, rePositioned);
+            if (employee) _.extend(employee, this._rePositionShape(employee));
             return employee;
         },
 
@@ -460,21 +494,22 @@ define(function (require) {
             if (fill) text.fill = fill;
             if (stroke) text.stroke = stroke;
             text.linewidth = 1;
+            text.weight = 'bold';
             this._addToGroup(text);
 
-            var filterId = 'f-' + message.replace(/[^A-Z0-9]+/ig, '');
-            var filter = this._svg.createElement('filter', {
-                id: filterId, x: 0, y: 0, height: 1, width: 1
-            });
-            var turbulence = this._svg.createElement('feFlood', { floodColor: 'white' });
-            var displacement = this._svg.createElement('feComposite', { in: 'SourceGraphic' });
-            filter.appendChild(turbulence);
-            filter.appendChild(displacement);
-            this._two.renderer.defs.appendChild(filter);
+            //var filterId = 'f-' + message.replace(/[^A-Z0-9]+/ig, '');
+            //var filter = this._svg.createElement('filter', {
+            //    id: filterId, x: 0, y: 0, height: 1, width: 1
+            //});
+            //var turbulence = this._svg.createElement('feFlood', { 'flood-color': 'transparent' });
+            //var displacement = this._svg.createElement('feComposite', { in: 'SourceGraphic',  operator: "xor" });
+            //filter.appendChild(turbulence);
+            //filter.appendChild(displacement);
+            //this._two.renderer.defs.appendChild(filter);
 
-            this._svg.setAttributes(text._renderer.elem, {
-                filter: 'url(#' + filterId + ')'
-            });
+            //this._svg.setAttributes(text._renderer.elem, {
+            //    filter: 'url(#' + filterId + ')'
+            //});
         },
 
         _drawPoint: function (x, y) {
