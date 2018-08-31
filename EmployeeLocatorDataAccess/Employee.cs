@@ -21,11 +21,15 @@ namespace EmployeeLocatorDataAccess
         }
     
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string SkillSet { get; set; }
         public int DepartmentID { get; set; }
         public int DesignationID { get; set; }
         public Nullable<int> ManagerID { get; set; }
+        public string CellPhone { get; set; }
+        public string OfficePhone { get; set; }
+        public string EmailID { get; set; }
         public bool IsActive { get; set; }
     
         public virtual Department Department { get; set; }

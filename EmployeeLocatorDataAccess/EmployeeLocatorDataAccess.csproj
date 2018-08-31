@@ -51,8 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeeLocatorRepository.cs" />
-    <Compile Include="BaseRepository.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>EmployeeLocatorEntities.tt</DependentUpon>
     </Compile>
@@ -77,6 +75,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeeLocatorEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeLocatorRepository.cs" />
+    <Compile Include="BaseRepository.cs" />
     <Compile Include="EmpPosition.cs">
       <DependentUpon>EmployeeLocatorEntities.tt</DependentUpon>
     </Compile>
@@ -86,7 +86,7 @@
     <Compile Include="GetAvailablePlaces_Result.cs">
       <DependentUpon>EmployeeLocatorEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="GetEmptyPlaces_Result.cs">
+    <Compile Include="GetEmpDetails_Result.cs">
       <DependentUpon>EmployeeLocatorEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="IEmployeeLocatorRepository.cs" />
@@ -122,6 +122,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="EmployeeLocatorEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EmployeeLocatorEntities.edmx</DependentUpon>
@@ -132,9 +135,6 @@
       <DependentUpon>EmployeeLocatorEntities.edmx</DependentUpon>
       <LastGenOutput>EmployeeLocatorEntities.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

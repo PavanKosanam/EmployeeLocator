@@ -14,6 +14,18 @@ namespace EmployeeLocator.Controllers
         }
 
         [HttpGet]
+        public JsonResult FindPersonOrLocationById(int Id)
+        {
+            var result = new Response
+            {
+                Data = _employeeRepository.FindPersonOrLocationById(Id),
+                Status = ResponseStatus.SUCCESS
+            };
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public JsonResult FindPersonOrLocationResult(string searchTerm)
         {
             var result = new Response

@@ -10,6 +10,12 @@ namespace EmployeeLocatorDataAccess
         {
         }
 
+        public List<GetEmpDetails_Result> FindPersonOrLocationById(int Id)
+        {
+            var data = _context.GetEmpDetails(Id).ToList();
+            return data;
+        }
+
         public List<FindPersonOrLoc_Result> FindPersonOrLocation(string searchTerm)
         {
             var data = _context.FindPersonOrLoc(searchTerm).ToList();

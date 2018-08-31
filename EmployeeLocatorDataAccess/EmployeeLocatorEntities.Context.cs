@@ -51,9 +51,13 @@ namespace EmployeeLocatorDataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAvailablePlaces_Result>("GetAvailablePlaces");
         }
     
-        public virtual ObjectResult<GetEmptyPlaces_Result> GetEmptyPlaces()
+        public virtual ObjectResult<GetEmpDetails_Result> GetEmpDetails(Nullable<int> empID)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmptyPlaces_Result>("GetEmptyPlaces");
+            var empIDParameter = empID.HasValue ?
+                new ObjectParameter("EmpID", empID) :
+                new ObjectParameter("EmpID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmpDetails_Result>("GetEmpDetails", empIDParameter);
         }
     }
 }

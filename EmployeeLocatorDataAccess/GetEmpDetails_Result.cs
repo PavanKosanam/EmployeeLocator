@@ -11,10 +11,9 @@ namespace EmployeeLocatorDataAccess
 {
     using System;
     
-    public partial class FindPersonOrLoc_Result
+    public partial class GetEmpDetails_Result
     {
         public int ID { get; set; }
-        public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<int> ManagerID { get; set; }

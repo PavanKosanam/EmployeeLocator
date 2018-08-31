@@ -4,50 +4,54 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="FloorWalkerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+      <Schema Namespace="FloorWalkerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="Name" MaxLength="126" Type="nvarchar" />
-          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="126" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Designation">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="Name" MaxLength="126" Type="nvarchar" />
-          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="126" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" Type="int" />
-          <Property Name="Name" MaxLength="126" Type="nvarchar" />
-          <Property Name="SkillSet" MaxLength="500" Type="nvarchar" />
-          <Property Name="DepartmentID" Nullable="false" Type="int" />
-          <Property Name="DesignationID" Nullable="false" Type="int" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="126" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="126" />
+          <Property Name="SkillSet" Type="nvarchar" MaxLength="500" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="DesignationID" Type="int" Nullable="false" />
           <Property Name="ManagerID" Type="int" />
-          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CellPhone" Type="nvarchar" MaxLength="126" />
+          <Property Name="OfficePhone" Type="nvarchar" MaxLength="126" />
+          <Property Name="EmailID" Type="nvarchar" MaxLength="126" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="EmpPosition">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="PositionID" Nullable="false" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
           <Property Name="EmpID" Type="int" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="Name" MaxLength="126" Type="nvarchar" />
-          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="126" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -59,45 +63,45 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
             <PropertyRef Name="To_X_Value" />
             <PropertyRef Name="To_Y_Value" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="From_X_Value" Nullable="false" Type="int" />
-          <Property Name="From_Y_Value" Nullable="false" Type="int" />
-          <Property Name="To_X_Value" Nullable="false" Type="int" />
-          <Property Name="To_Y_Value" Nullable="false" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="From_X_Value" Type="int" Nullable="false" />
+          <Property Name="From_Y_Value" Type="int" Nullable="false" />
+          <Property Name="To_X_Value" Type="int" Nullable="false" />
+          <Property Name="To_Y_Value" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Phase">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="Name" MaxLength="126" Type="nvarchar" />
-          <Property Name="Map" MaxLength="126" Type="nvarchar" />
-          <Property Name="LocID" Nullable="false" Type="int" />
-          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="126" />
+          <Property Name="Map" Type="nvarchar" MaxLength="126" />
+          <Property Name="LocID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="Name" MaxLength="126" Type="nvarchar" />
-          <Property Name="TypeID" Nullable="false" Type="int" />
-          <Property Name="X_Value" Nullable="false" Type="int" />
-          <Property Name="Y_Value" Nullable="false" Type="int" />
-          <Property Name="PhaseID" Nullable="false" Type="int" />
-          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="126" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="X_Value" Type="int" Nullable="false" />
+          <Property Name="Y_Value" Type="int" Nullable="false" />
+          <Property Name="PhaseID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PositionType">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="Name" MaxLength="126" Type="nvarchar" />
-          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="126" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Employee_DepartmentID">
-          <End Type="Self.Department" Multiplicity="1" Role="Department" />
-          <End Type="Self.Employee" Multiplicity="*" Role="Employee" />
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="ID" />
@@ -108,8 +112,8 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_DesignationID">
-          <End Type="Self.Designation" Multiplicity="1" Role="Designation" />
-          <End Type="Self.Employee" Multiplicity="*" Role="Employee" />
+          <End Role="Designation" Type="Self.Designation" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Designation">
               <PropertyRef Name="ID" />
@@ -120,8 +124,8 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmpPosition_EmpID">
-          <End Type="Self.Employee" Multiplicity="0..1" Role="Employee" />
-          <End Type="Self.EmpPosition" Multiplicity="*" Role="EmpPosition" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpPosition" Type="Self.EmpPosition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="ID" />
@@ -132,8 +136,8 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmpPosition_PositionID">
-          <End Type="Self.Position" Multiplicity="1" Role="Position" />
-          <End Type="Self.EmpPosition" Multiplicity="*" Role="EmpPosition" />
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="EmpPosition" Type="Self.EmpPosition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Position">
               <PropertyRef Name="ID" />
@@ -144,8 +148,8 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Phase_LocID">
-          <End Type="Self.Location" Multiplicity="1" Role="Location" />
-          <End Type="Self.Phase" Multiplicity="*" Role="Phase" />
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Phase" Type="Self.Phase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Location">
               <PropertyRef Name="ID" />
@@ -156,8 +160,8 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Position_PhaseID">
-          <End Type="Self.Phase" Multiplicity="1" Role="Phase" />
-          <End Type="Self.Position" Multiplicity="*" Role="Position" />
+          <End Role="Phase" Type="Self.Phase" Multiplicity="1" />
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Phase">
               <PropertyRef Name="ID" />
@@ -168,8 +172,8 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Position_TypeID">
-          <End Type="Self.PositionType" Multiplicity="1" Role="PositionType" />
-          <End Type="Self.Position" Multiplicity="*" Role="Position" />
+          <End Role="PositionType" Type="Self.PositionType" Multiplicity="1" />
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PositionType">
               <PropertyRef Name="ID" />
@@ -183,6 +187,9 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
           <Parameter Name="SearchText" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="GetAvailablePlaces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetEmpDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="FloorWalkerModelStoreContainer">
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
@@ -202,35 +209,36 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
     FROM [dbo].[Path] AS [Path]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Employee_DepartmentID" Association="Self.FK_Employee_DepartmentID">
-            <End EntitySet="Department" Role="Department" />
-            <End EntitySet="Employee" Role="Employee" />
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_DesignationID" Association="Self.FK_Employee_DesignationID">
-            <End EntitySet="Designation" Role="Designation" />
-            <End EntitySet="Employee" Role="Employee" />
+            <End Role="Designation" EntitySet="Designation" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="FK_EmpPosition_EmpID" Association="Self.FK_EmpPosition_EmpID">
-            <End EntitySet="Employee" Role="Employee" />
-            <End EntitySet="EmpPosition" Role="EmpPosition" />
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmpPosition" EntitySet="EmpPosition" />
           </AssociationSet>
           <AssociationSet Name="FK_EmpPosition_PositionID" Association="Self.FK_EmpPosition_PositionID">
-            <End EntitySet="Position" Role="Position" />
-            <End EntitySet="EmpPosition" Role="EmpPosition" />
+            <End Role="Position" EntitySet="Position" />
+            <End Role="EmpPosition" EntitySet="EmpPosition" />
           </AssociationSet>
           <AssociationSet Name="FK_Phase_LocID" Association="Self.FK_Phase_LocID">
-            <End EntitySet="Location" Role="Location" />
-            <End EntitySet="Phase" Role="Phase" />
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Phase" EntitySet="Phase" />
           </AssociationSet>
           <AssociationSet Name="FK_Position_PhaseID" Association="Self.FK_Position_PhaseID">
-            <End EntitySet="Phase" Role="Phase" />
-            <End EntitySet="Position" Role="Position" />
+            <End Role="Phase" EntitySet="Phase" />
+            <End Role="Position" EntitySet="Position" />
           </AssociationSet>
           <AssociationSet Name="FK_Position_TypeID" Association="Self.FK_Position_TypeID">
-            <End EntitySet="PositionType" Role="PositionType" />
-            <End EntitySet="Position" Role="Position" />
+            <End Role="PositionType" EntitySet="PositionType" />
+            <End Role="Position" EntitySet="Position" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FloorWalkerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -257,11 +265,15 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
           <Property Name="SkillSet" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="DepartmentID" Type="Int32" Nullable="false" />
           <Property Name="DesignationID" Type="Int32" Nullable="false" />
           <Property Name="ManagerID" Type="Int32" />
+          <Property Name="CellPhone" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="OfficePhone" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="EmailID" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Employee_DepartmentID" FromRole="Employee" ToRole="Department" />
           <NavigationProperty Name="Designation" Relationship="Self.FK_Employee_DesignationID" FromRole="Employee" ToRole="Designation" />
@@ -459,17 +471,30 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
             <End Role="Position" EntitySet="Positions" />
           </AssociationSet>
           <FunctionImport Name="FindPersonOrLoc" ReturnType="Collection(FloorWalkerModel.FindPersonOrLoc_Result)">
-          <Parameter Name="SearchText" Type="String" Mode="In" />
+            <Parameter Name="SearchText" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetAvailablePlaces" ReturnType="Collection(FloorWalkerModel.GetAvailablePlaces_Result)" />
-          <FunctionImport Name="GetEmptyPlaces" ReturnType="Collection(FloorWalkerModel.GetEmptyPlaces_Result)" />
+          <FunctionImport Name="GetEmpDetails" ReturnType="Collection(FloorWalkerModel.GetEmpDetails_Result)">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="FindPersonOrLoc_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="126" />
-          <Property Type="String" Name="Designation" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="253" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="126" />
+          <Property Type="Int32" Name="ManagerID" Nullable="true" />
+          <Property Type="String" Name="ManagerName" Nullable="true" MaxLength="253" />
+          <Property Type="Int32" Name="Reports" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="126" />
           <Property Type="String" Name="Department" Nullable="true" MaxLength="126" />
-          <Property Type="String" Name="Manager" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="CellPhone" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="OfficePhone" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="126" />
+          <Property Type="Int32" Name="City" Nullable="true" />
+          <Property Type="Int32" Name="Pic" Nullable="true" />
+          <Property Type="Int32" Name="TwitterID" Nullable="true" />
+          <Property Type="Int32" Name="Blog" Nullable="true" />
           <Property Type="Int32" Name="X_Value" Nullable="false" />
           <Property Type="Int32" Name="Y_Value" Nullable="false" />
         </ComplexType>
@@ -480,10 +505,22 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
           <Property Type="Int32" Name="X_Value" Nullable="false" />
           <Property Type="Int32" Name="Y_Value" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="GetEmptyPlaces_Result">
+        <ComplexType Name="GetEmpDetails_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="126" />
-          <Property Type="Int32" Name="Color" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="126" />
+          <Property Type="Int32" Name="ManagerID" Nullable="true" />
+          <Property Type="String" Name="ManagerName" Nullable="true" MaxLength="253" />
+          <Property Type="Int32" Name="Reports" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="CellPhone" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="OfficePhone" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="EmailID" Nullable="true" MaxLength="126" />
+          <Property Type="Int32" Name="City" Nullable="true" />
+          <Property Type="Int32" Name="Pic" Nullable="true" />
+          <Property Type="Int32" Name="TwitterID" Nullable="true" />
+          <Property Type="Int32" Name="Blog" Nullable="true" />
           <Property Type="Int32" Name="X_Value" Nullable="false" />
           <Property Type="Int32" Name="Y_Value" Nullable="false" />
         </ComplexType>
@@ -515,11 +552,15 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
             <EntityTypeMapping TypeName="FloorWalkerModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="SkillSet" ColumnName="SkillSet" />
                 <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
                 <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
                 <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -591,9 +632,20 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
               <ComplexTypeMapping TypeName="FloorWalkerModel.FindPersonOrLoc_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="Reports" ColumnName="Reports" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="TwitterID" ColumnName="TwitterID" />
+                <ScalarProperty Name="Blog" ColumnName="Blog" />
                 <ScalarProperty Name="X_Value" ColumnName="X_Value" />
                 <ScalarProperty Name="Y_Value" ColumnName="Y_Value" />
               </ComplexTypeMapping>
@@ -605,6 +657,29 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="X_Value" ColumnName="X_Value" />
+                <ScalarProperty Name="Y_Value" ColumnName="Y_Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEmpDetails" FunctionName="FloorWalkerModel.Store.GetEmpDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FloorWalkerModel.GetEmpDetails_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="Reports" ColumnName="Reports" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="TwitterID" ColumnName="TwitterID" />
+                <ScalarProperty Name="Blog" ColumnName="Blog" />
                 <ScalarProperty Name="X_Value" ColumnName="X_Value" />
                 <ScalarProperty Name="Y_Value" ColumnName="Y_Value" />
               </ComplexTypeMapping>

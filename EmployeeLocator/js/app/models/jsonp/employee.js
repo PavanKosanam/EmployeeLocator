@@ -7,7 +7,7 @@ define(function (require) {
 
         Employee = Backbone.Model.extend({
 
-            urlRoot: "http://localhost:65495/employees",
+            urlRoot: "http://localhost:65495/Data/FindPersonOrLocationResult",
             //urlRoot: "/directory-rest-php/employees",
 
             initialize: function () {

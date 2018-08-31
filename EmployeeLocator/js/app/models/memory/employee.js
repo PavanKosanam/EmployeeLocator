@@ -54,31 +54,74 @@ define(function (require) {
 
             $.ajax({
                 dataType: "json",
-                url: "/Data/FindPersonOrLocationResult",
-                data: { searchTerm : id},
+                url: "/Data/FindPersonOrLocationById",
+                data: { Id: id },
                 success: function (response) {
-                    employees = response.Data;
+                    $.each(response.Data, function (i, x) {
+                        employees = createEmployeeModel(x);
+                    });
                     l = employees.length;
+                    for (i = 0; i < l; i = i + 1) {
+                        if (employees[i].id === id) {
+                            employee = employees[i];
+                            break;
+                        }
+                    }
+                    deferred.resolve(employee);
                 }
             });
-
-            for (i = 0; i < l; i = i + 1) {
-                if (employees[i].id === id) {
-                    employee = employees[i];
-                    break;
-                }
-            }
-            deferred.resolve(employee);
             return deferred.promise();
         },
 
+        urlExists = function (url) {
+            var http = new XMLHttpRequest();
+            try {
+                http.open('HEAD', url, false);
+                http.send();
+            } catch (e) {
+            }
+            return http.status != 404;
+        },
+
+        createEmployeeModel = function (x) {
+            var fn = x.FirstName.toLowerCase().replace(/[^A-Z0-9]+/ig, ''), ln = x.LastName.toLowerCase().replace(/[^A-Z0-9]+/ig, '');
+            var pic = urlExists('/pics/' + fn + '_' + ln + '.jpg') ? fn + '_' + ln + '.jpg' : (x.FirstName.endsWith('a') || x.FirstName.endsWith('i')) ? 'roja_mule.jpg' : 'pavan_kosanam.jpg';
+            return {
+                id: x.ID,
+                name: x.Name,
+                firstName: x.FirstName,
+                lastName: x.LastName,
+                managerId: x.ManagerID,
+                managerName: x.ManagerName,
+                reports: x.Reports,
+                title: x.Title,
+                department: x.Department,
+                cellPhone: x.CellPhone,
+                officePhone: x.OfficePhone,
+                email: x.EmailID,
+                city: x.City,
+                pic: pic,
+                twitterId: x.TwitterID,
+                blog: x.Blog,
+                width: x.X_Value,
+                height: x.Y_Value
+            };
+        },
+
         findByName = function (searchKey) {
-            var deferred = $.Deferred(),
-                results = employees.filter(function (element) {
-                    var fullName = element.firstName + " " + element.lastName;
-                    return fullName.toLowerCase().indexOf(searchKey.toLowerCase()) > 1;
-                });
-            deferred.resolve(results);
+            var deferred = $.Deferred(), results;
+            $.ajax({
+                dataType: "json",
+                url: "/Data/FindPersonOrLocationResult",
+                data: { searchTerm: searchKey },
+                success: function (response) {
+                    results = [];
+                    $.each(response.Data, function (i, x) {
+                        results.push(createEmployeeModel(x));
+                    });
+                    deferred.resolve(results);
+                }
+            });
             return deferred.promise();
         },
 

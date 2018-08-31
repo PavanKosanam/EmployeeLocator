@@ -121,11 +121,11 @@ define(function (require) {
                }).play();
             //this._two.update();
 
-            document.onmousemove = function (e) {
-                var x = e.pageX;
-                var y = e.pageY;
-                $('#mouseposition').text("pageX: " + e.pageX + " pageY: " + e.pageY + ", clientX: " + e.clientX + " clientY: " + e.clientY + ", screenX: " + e.screenX + " screenY: " + e.screenY + ", x: " + e.x + " y: " + e.y + ", layerX: " + e.layerX + " layerY: " + e.layerY + ", offsetX: " + e.offsetX + " offsetY: " + e.offsetY);
-            };
+            //document.onmousemove = function (e) {
+            //    var x = e.pageX;
+            //    var y = e.pageY;
+            //    $('#mouseposition').text("pageX: " + e.pageX + " pageY: " + e.pageY + ", clientX: " + e.clientX + " clientY: " + e.clientY + ", screenX: " + e.screenX + " screenY: " + e.screenY + ", x: " + e.x + " y: " + e.y + ", layerX: " + e.layerX + " layerY: " + e.layerY + ", offsetX: " + e.offsetX + " offsetY: " + e.offsetY);
+            //};
         },
 
         _resize: function (x, y) {
@@ -134,6 +134,13 @@ define(function (require) {
             var self = this;
             this._destroyAll();
             this._setRendererSize();
+            var positions = JSON.parse(JSON.stringify(this._positions));
+            Two.Utils.each(positions, function (pos, index, parent) {
+                pos = self._rePositionShape(pos);
+            });
+
+
+
             var image = this._getImage();
             var rv = this._getResponsiveValue(image.width), rvpx = (rv * 10), r = (rvpx / 2);
             var source = this._findEmployee(1718);
