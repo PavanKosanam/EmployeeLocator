@@ -409,6 +409,9 @@ define(function (require) {
             Two.Utils.each(this._two.scene.children, function (child, a, i) {
                 self._two.scene.children.splice(child, 1);
             });
+            Two.Utils.each(this._two.renderer.defs.children, function (child, a, i) {
+                self._two.renderer.defs.children.splice(child, 1);
+            });
             this._two.update();
         },
 
