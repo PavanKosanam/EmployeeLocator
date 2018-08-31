@@ -22,7 +22,7 @@ namespace EmployeeLocator.Controllers
                 Status = ResponseStatus.SUCCESS
             };
 
-            return Json(result);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -33,7 +33,7 @@ namespace EmployeeLocator.Controllers
                 Data = _employeeRepository.GetAvailablePlaces(),
                 Status = ResponseStatus.SUCCESS
             };
-            return Json(result);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -44,7 +44,7 @@ namespace EmployeeLocator.Controllers
                 Data = _employeeRepository.GetPaths(),
                 Status = ResponseStatus.SUCCESS
             };
-            return Json(result);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -45,10 +45,23 @@ define(function (require) {
         ],
 
         findById = function (id) {
+            var employees = [];
+
             var deferred = $.Deferred(),
                 employee = null,
                 l = employees.length,
                 i;
+
+            $.ajax({
+                dataType: "json",
+                url: "/Data/FindPersonOrLocationResult",
+                data: { searchTerm : id},
+                success: function (response) {
+                    employees = response.Data;
+                    l = employees.length;
+                }
+            });
+
             for (i = 0; i < l; i = i + 1) {
                 if (employees[i].id === id) {
                     employee = employees[i];
