@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a9e7f2de85c54593b98a89c59b711af9" Name="Diagram1">
+        <EntityTypeShape EntityType="FloorWalkerModel.Department" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloorWalkerModel.Designation" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloorWalkerModel.Employee" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloorWalkerModel.EmpPosition" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloorWalkerModel.Location" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloorWalkerModel.Phase" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloorWalkerModel.Position" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloorWalkerModel.PositionType" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FloorWalkerModel.Path" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="FloorWalkerModel.FK_Employee_DepartmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="FloorWalkerModel.FK_Employee_DesignationID" ManuallyRouted="false" />
+        <AssociationConnector Association="FloorWalkerModel.FK_EmpPosition_EmpID" ManuallyRouted="false" />
+        <AssociationConnector Association="FloorWalkerModel.FK_EmpPosition_PositionID" ManuallyRouted="false" />
+        <AssociationConnector Association="FloorWalkerModel.FK_Phase_LocID" ManuallyRouted="false" />
+        <AssociationConnector Association="FloorWalkerModel.FK_Position_PhaseID" ManuallyRouted="false" />
+        <AssociationConnector Association="FloorWalkerModel.FK_Position_TypeID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

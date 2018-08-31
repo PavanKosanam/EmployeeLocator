@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="FloorWalkerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" MaxLength="126" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" MaxLength="126" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" Type="int" />
+          <Property Name="Name" MaxLength="126" Type="nvarchar" />
+          <Property Name="SkillSet" MaxLength="500" Type="nvarchar" />
+          <Property Name="DepartmentID" Nullable="false" Type="int" />
+          <Property Name="DesignationID" Nullable="false" Type="int" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="EmpPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="PositionID" Nullable="false" Type="int" />
+          <Property Name="EmpID" Type="int" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" MaxLength="126" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Path">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="From_X_Value" />
+            <PropertyRef Name="From_Y_Value" />
+            <PropertyRef Name="To_X_Value" />
+            <PropertyRef Name="To_Y_Value" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="From_X_Value" Nullable="false" Type="int" />
+          <Property Name="From_Y_Value" Nullable="false" Type="int" />
+          <Property Name="To_X_Value" Nullable="false" Type="int" />
+          <Property Name="To_Y_Value" Nullable="false" Type="int" />
+        </EntityType>
+        <EntityType Name="Phase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" MaxLength="126" Type="nvarchar" />
+          <Property Name="Map" MaxLength="126" Type="nvarchar" />
+          <Property Name="LocID" Nullable="false" Type="int" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" MaxLength="126" Type="nvarchar" />
+          <Property Name="TypeID" Nullable="false" Type="int" />
+          <Property Name="X_Value" Nullable="false" Type="int" />
+          <Property Name="Y_Value" Nullable="false" Type="int" />
+          <Property Name="PhaseID" Nullable="false" Type="int" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="PositionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Name" MaxLength="126" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Employee_DepartmentID">
+          <End Type="Self.Department" Multiplicity="1" Role="Department" />
+          <End Type="Self.Employee" Multiplicity="*" Role="Employee" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_DesignationID">
+          <End Type="Self.Designation" Multiplicity="1" Role="Designation" />
+          <End Type="Self.Employee" Multiplicity="*" Role="Employee" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpPosition_EmpID">
+          <End Type="Self.Employee" Multiplicity="0..1" Role="Employee" />
+          <End Type="Self.EmpPosition" Multiplicity="*" Role="EmpPosition" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPosition">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpPosition_PositionID">
+          <End Type="Self.Position" Multiplicity="1" Role="Position" />
+          <End Type="Self.EmpPosition" Multiplicity="*" Role="EmpPosition" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPosition">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phase_LocID">
+          <End Type="Self.Location" Multiplicity="1" Role="Location" />
+          <End Type="Self.Phase" Multiplicity="*" Role="Phase" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Phase">
+              <PropertyRef Name="LocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_PhaseID">
+          <End Type="Self.Phase" Multiplicity="1" Role="Phase" />
+          <End Type="Self.Position" Multiplicity="*" Role="Position" />
+          <ReferentialConstraint>
+            <Principal Role="Phase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Position">
+              <PropertyRef Name="PhaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_TypeID">
+          <End Type="Self.PositionType" Multiplicity="1" Role="PositionType" />
+          <End Type="Self.Position" Multiplicity="*" Role="Position" />
+          <ReferentialConstraint>
+            <Principal Role="PositionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Position">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="FindPersonOrLoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SearchText" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetAvailablePlaces" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="FloorWalkerModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpPosition" EntityType="Self.EmpPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phase" EntityType="Self.Phase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PositionType" EntityType="Self.PositionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Path" EntityType="Self.Path" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Path].[ID] AS [ID], 
+    [Path].[From_X_Value] AS [From_X_Value], 
+    [Path].[From_Y_Value] AS [From_Y_Value], 
+    [Path].[To_X_Value] AS [To_X_Value], 
+    [Path].[To_Y_Value] AS [To_Y_Value]
+    FROM [dbo].[Path] AS [Path]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Employee_DepartmentID" Association="Self.FK_Employee_DepartmentID">
+            <End EntitySet="Department" Role="Department" />
+            <End EntitySet="Employee" Role="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_DesignationID" Association="Self.FK_Employee_DesignationID">
+            <End EntitySet="Designation" Role="Designation" />
+            <End EntitySet="Employee" Role="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpPosition_EmpID" Association="Self.FK_EmpPosition_EmpID">
+            <End EntitySet="Employee" Role="Employee" />
+            <End EntitySet="EmpPosition" Role="EmpPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpPosition_PositionID" Association="Self.FK_EmpPosition_PositionID">
+            <End EntitySet="Position" Role="Position" />
+            <End EntitySet="EmpPosition" Role="EmpPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phase_LocID" Association="Self.FK_Phase_LocID">
+            <End EntitySet="Location" Role="Location" />
+            <End EntitySet="Phase" Role="Phase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_PhaseID" Association="Self.FK_Position_PhaseID">
+            <End EntitySet="Phase" Role="Phase" />
+            <End EntitySet="Position" Role="Position" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_TypeID" Association="Self.FK_Position_TypeID">
+            <End EntitySet="PositionType" Role="PositionType" />
+            <End EntitySet="Position" Role="Position" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FloorWalkerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_DepartmentID" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_DesignationID" FromRole="Designation" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="SkillSet" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="DesignationID" Type="Int32" Nullable="false" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Employee_DepartmentID" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Designation" Relationship="Self.FK_Employee_DesignationID" FromRole="Employee" ToRole="Designation" />
+          <NavigationProperty Name="EmpPositions" Relationship="Self.FK_EmpPosition_EmpID" FromRole="Employee" ToRole="EmpPosition" />
+        </EntityType>
+        <EntityType Name="EmpPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="EmpID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EmpPosition_EmpID" FromRole="EmpPosition" ToRole="Employee" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_EmpPosition_PositionID" FromRole="EmpPosition" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Phases" Relationship="Self.FK_Phase_LocID" FromRole="Location" ToRole="Phase" />
+        </EntityType>
+        <EntityType Name="Phase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="Map" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="LocID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Phase_LocID" FromRole="Phase" ToRole="Location" />
+          <NavigationProperty Name="Positions" Relationship="Self.FK_Position_PhaseID" FromRole="Phase" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="X_Value" Type="Int32" Nullable="false" />
+          <Property Name="Y_Value" Type="Int32" Nullable="false" />
+          <Property Name="PhaseID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EmpPositions" Relationship="Self.FK_EmpPosition_PositionID" FromRole="Position" ToRole="EmpPosition" />
+          <NavigationProperty Name="Phase" Relationship="Self.FK_Position_PhaseID" FromRole="Position" ToRole="Phase" />
+          <NavigationProperty Name="PositionType" Relationship="Self.FK_Position_TypeID" FromRole="Position" ToRole="PositionType" />
+        </EntityType>
+        <EntityType Name="PositionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="126" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Positions" Relationship="Self.FK_Position_TypeID" FromRole="PositionType" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="Path">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="From_X_Value" />
+            <PropertyRef Name="From_Y_Value" />
+            <PropertyRef Name="To_X_Value" />
+            <PropertyRef Name="To_Y_Value" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From_X_Value" Type="Int32" Nullable="false" />
+          <Property Name="From_Y_Value" Type="Int32" Nullable="false" />
+          <Property Name="To_X_Value" Type="Int32" Nullable="false" />
+          <Property Name="To_Y_Value" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Employee_DepartmentID">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_DesignationID">
+          <End Role="Designation" Type="Self.Designation" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpPosition_EmpID">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmpPosition" Type="Self.EmpPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPosition">
+              <PropertyRef Name="EmpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpPosition_PositionID">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="EmpPosition" Type="Self.EmpPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmpPosition">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phase_LocID">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Phase" Type="Self.Phase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Phase">
+              <PropertyRef Name="LocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_PhaseID">
+          <End Role="Phase" Type="Self.Phase" Multiplicity="1" />
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Position">
+              <PropertyRef Name="PhaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_TypeID">
+          <End Role="PositionType" Type="Self.PositionType" Multiplicity="1" />
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PositionType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Position">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FloorWalkerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmpPositions" EntityType="Self.EmpPosition" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Phases" EntityType="Self.Phase" />
+          <EntitySet Name="Positions" EntityType="Self.Position" />
+          <EntitySet Name="PositionTypes" EntityType="Self.PositionType" />
+          <EntitySet Name="Paths" EntityType="Self.Path" />
+          <AssociationSet Name="FK_Employee_DepartmentID" Association="Self.FK_Employee_DepartmentID">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_DesignationID" Association="Self.FK_Employee_DesignationID">
+            <End Role="Designation" EntitySet="Designations" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpPosition_EmpID" Association="Self.FK_EmpPosition_EmpID">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmpPosition" EntitySet="EmpPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpPosition_PositionID" Association="Self.FK_EmpPosition_PositionID">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="EmpPosition" EntitySet="EmpPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phase_LocID" Association="Self.FK_Phase_LocID">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Phase" EntitySet="Phases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_PhaseID" Association="Self.FK_Position_PhaseID">
+            <End Role="Phase" EntitySet="Phases" />
+            <End Role="Position" EntitySet="Positions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_TypeID" Association="Self.FK_Position_TypeID">
+            <End Role="PositionType" EntitySet="PositionTypes" />
+            <End Role="Position" EntitySet="Positions" />
+          </AssociationSet>
+          <FunctionImport Name="FindPersonOrLoc" ReturnType="Collection(FloorWalkerModel.FindPersonOrLoc_Result)">
+          <Parameter Name="SearchText" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="GetAvailablePlaces" ReturnType="Collection(FloorWalkerModel.GetAvailablePlaces_Result)" />
+          <FunctionImport Name="GetEmptyPlaces" ReturnType="Collection(FloorWalkerModel.GetEmptyPlaces_Result)" />
+        </EntityContainer>
+        <ComplexType Name="FindPersonOrLoc_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="Designation" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="126" />
+          <Property Type="String" Name="Manager" Nullable="true" MaxLength="126" />
+          <Property Type="Int32" Name="X_Value" Nullable="false" />
+          <Property Type="Int32" Name="Y_Value" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAvailablePlaces_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="126" />
+          <Property Type="Int32" Name="Availability" Nullable="false" />
+          <Property Type="Int32" Name="X_Value" Nullable="false" />
+          <Property Type="Int32" Name="Y_Value" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetEmptyPlaces_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="126" />
+          <Property Type="Int32" Name="Color" Nullable="false" />
+          <Property Type="Int32" Name="X_Value" Nullable="false" />
+          <Property Type="Int32" Name="Y_Value" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FloorWalkerModelStoreContainer" CdmEntityContainer="FloorWalkerEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="FloorWalkerModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="FloorWalkerModel.Designation">
+              <MappingFragment StoreEntitySet="Designation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="FloorWalkerModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SkillSet" ColumnName="SkillSet" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpPositions">
+            <EntityTypeMapping TypeName="FloorWalkerModel.EmpPosition">
+              <MappingFragment StoreEntitySet="EmpPosition">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="FloorWalkerModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phases">
+            <EntityTypeMapping TypeName="FloorWalkerModel.Phase">
+              <MappingFragment StoreEntitySet="Phase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Map" ColumnName="Map" />
+                <ScalarProperty Name="LocID" ColumnName="LocID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="FloorWalkerModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="X_Value" ColumnName="X_Value" />
+                <ScalarProperty Name="Y_Value" ColumnName="Y_Value" />
+                <ScalarProperty Name="PhaseID" ColumnName="PhaseID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PositionTypes">
+            <EntityTypeMapping TypeName="FloorWalkerModel.PositionType">
+              <MappingFragment StoreEntitySet="PositionType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paths">
+            <EntityTypeMapping TypeName="FloorWalkerModel.Path">
+              <MappingFragment StoreEntitySet="Path">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="From_X_Value" ColumnName="From_X_Value" />
+                <ScalarProperty Name="From_Y_Value" ColumnName="From_Y_Value" />
+                <ScalarProperty Name="To_X_Value" ColumnName="To_X_Value" />
+                <ScalarProperty Name="To_Y_Value" ColumnName="To_Y_Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FindPersonOrLoc" FunctionName="FloorWalkerModel.Store.FindPersonOrLoc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FloorWalkerModel.FindPersonOrLoc_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="X_Value" ColumnName="X_Value" />
+                <ScalarProperty Name="Y_Value" ColumnName="Y_Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAvailablePlaces" FunctionName="FloorWalkerModel.Store.GetAvailablePlaces">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FloorWalkerModel.GetAvailablePlaces_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="X_Value" ColumnName="X_Value" />
+                <ScalarProperty Name="Y_Value" ColumnName="Y_Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
