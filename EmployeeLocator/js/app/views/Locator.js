@@ -42,65 +42,65 @@ define(function (require) {
                     }
                 }
             };
-            this._employeeList = [
-                { id: 2, name: 'Hajera', width: 3507, height: 1110 },
-                { id: 25, name: 'C-27', width: 90, height: 1510 },
-                { id: 26, name: 'C-28', width: 90, height: 1400 },
-                { id: 27, name: 'C-29', width: 90, height: 1200 },
-                { id: 28, name: 'C-42', width: 2320, height: 640 },
-                { id: 29, name: 'P-63', width: 980, height: 1000 },
-                { id: 30, name: 'C-10', width: 3190, height: 1075 },
-                { id: 445, name: 'Tejaswini Battini', width: 265, height: 1185 },
-                { id: 544, name: 'Phani Vihari Iduri', width: 470, height: 1415 },
-                { id: 629, name: 'Somya Padhi', width: 360, height: 1260 },
-                { id: 698, name: 'Sudheer Manchikanti', width: 360, height: 1185 },
-                { id: 715, name: 'Chandana Kamishetty', width: 664, height: 1185 },
-                { id: 769, name: 'Divyasri Nalla', width: 570, height: 1185 },
-                { id: 772, name: 'Roja Mule', width: 570, height: 1340 },
-                { id: 797, name: 'Archana Chennadi', width: 370, height: 1515 },
-                { id: 810, name: 'Pavani Ulchala', width: 664, height: 1340 },
-                { id: 946, name: 'Ahammad Mulinti', width: 293, height: 1515 },
-                { id: 979, name: 'Supraja Ganji', width: 265, height: 1415 },
-                { id: 1032, name: 'Vinay Potnuru', width: 523, height: 1515 },
-                { id: 1042, name: 'Sneha Molugu', width: 470, height: 1185 },
-                { id: 1175, name: 'Bojareddy Gaddam', width: 445, height: 1515 },
-                { id: 1219, name: 'Santhi Arimanda', width: 265, height: 1260 },
-                { id: 1253, name: 'Bhavya Kanuboddu', width: 675, height: 1515 },
-                { id: 1498, name: 'Manjula Merin', width: 360, height: 1340 },
-                { id: 1602, name: 'Ankit Chaurasia', width: 664, height: 1415 },
-                { id: 1694, name: 'Srikanth Parepally', width: 664, height: 1260 },
-                { id: 1718, name: 'Pavan Kosanam', width: 265, height: 1340 },
-                { id: 1992, name: 'Pradeep Nallu', width: 600, height: 1515 },
-                { id: 2059, name: 'Bhanuprasad Gollapudi', width: 570, height: 1260 },
-                { id: 2112, name: 'Praveen Pasupuleti', width: 570, height: 1415 },
-            ];
+            //this._employeeList = [
+            //    { id: 2, name: 'Hajera', width: 3507, height: 1110 },
+            //    { id: 25, name: 'C-27', width: 90, height: 1510 },
+            //    { id: 26, name: 'C-28', width: 90, height: 1400 },
+            //    { id: 27, name: 'C-29', width: 90, height: 1200 },
+            //    { id: 28, name: 'C-42', width: 2320, height: 640 },
+            //    { id: 29, name: 'P-63', width: 980, height: 1000 },
+            //    { id: 30, name: 'C-10', width: 3190, height: 1075 },
+            //    { id: 445, name: 'Tejaswini Battini', width: 265, height: 1185 },
+            //    { id: 544, name: 'Phani Vihari Iduri', width: 470, height: 1415 },
+            //    { id: 629, name: 'Somya Padhi', width: 360, height: 1260 },
+            //    { id: 698, name: 'Sudheer Manchikanti', width: 360, height: 1185 },
+            //    { id: 715, name: 'Chandana Kamishetty', width: 664, height: 1185 },
+            //    { id: 769, name: 'Divyasri Nalla', width: 570, height: 1185 },
+            //    { id: 772, name: 'Roja Mule', width: 570, height: 1340 },
+            //    { id: 797, name: 'Archana Chennadi', width: 370, height: 1515 },
+            //    { id: 810, name: 'Pavani Ulchala', width: 664, height: 1340 },
+            //    { id: 946, name: 'Ahammad Mulinti', width: 293, height: 1515 },
+            //    { id: 979, name: 'Supraja Ganji', width: 265, height: 1415 },
+            //    { id: 1032, name: 'Vinay Potnuru', width: 523, height: 1515 },
+            //    { id: 1042, name: 'Sneha Molugu', width: 470, height: 1185 },
+            //    { id: 1175, name: 'Bojareddy Gaddam', width: 445, height: 1515 },
+            //    { id: 1219, name: 'Santhi Arimanda', width: 265, height: 1260 },
+            //    { id: 1253, name: 'Bhavya Kanuboddu', width: 675, height: 1515 },
+            //    { id: 1498, name: 'Manjula Merin', width: 360, height: 1340 },
+            //    { id: 1602, name: 'Ankit Chaurasia', width: 664, height: 1415 },
+            //    { id: 1694, name: 'Srikanth Parepally', width: 664, height: 1260 },
+            //    { id: 1718, name: 'Pavan Kosanam', width: 265, height: 1340 },
+            //    { id: 1992, name: 'Pradeep Nallu', width: 600, height: 1515 },
+            //    { id: 2059, name: 'Bhanuprasad Gollapudi', width: 570, height: 1260 },
+            //    { id: 2112, name: 'Praveen Pasupuleti', width: 570, height: 1415 },
+            //];
 
-            this._positions = [
-                { id: 1, name: 'GGKU3/WS/P2/087', availability: false, width: 664, height: 1185 },
-                { id: 2, name: 'GGKU3/WS/P2/088', availability: false, width: 664, height: 1260 },
-                { id: 3, name: 'GGKU3/WS/P2/089', availability: false, width: 664, height: 1340 },
-                { id: 4, name: 'GGKU3/WS/P2/090', availability: false, width: 664, height: 1415 },
-                { id: 5, name: 'GGKU3/WS/P2/091', availability: false, width: 570, height: 1415 },
-                { id: 6, name: 'GGKU3/WS/P2/092', availability: false, width: 570, height: 1340 },
-                { id: 7, name: 'GGKU3/WS/P2/093', availability: false, width: 570, height: 1260 },
-                { id: 8, name: 'GGKU3/WS/P2/094', availability: false, width: 570, height: 1185 },
-                { id: 9, name: 'GGKU3/WS/P2/095', availability: false, width: 470, height: 1185 },
-                { id: 10, name: 'GGKU3/WS/P2/098', availability: false, width: 470, height: 1415 },
-                { id: 11, name: 'GGKU3/WS/P2/099', availability: true, width: 360, height: 1415 },
-                { id: 12, name: 'GGKU3/WS/P2/0100', availability: false, width: 360, height: 1340 },
-                { id: 13, name: 'GGKU3/WS/P2/0101', availability: false, width: 360, height: 1260 },
-                { id: 14, name: 'GGKU3/WS/P2/0102', availability: false, width: 360, height: 1185 },
-                { id: 15, name: 'GGKU3/WS/P2/0103', availability: false, width: 265, height: 1185 },
-                { id: 16, name: 'GGKU3/WS/P2/0104', availability: false, width: 265, height: 1260 },
-                { id: 17, name: 'GGKU3/WS/P2/0105', availability: false, width: 265, height: 1340 },
-                { id: 18, name: 'GGKU3/WS/P2/0106', availability: false, width: 265, height: 1415 },
-                { id: 19, name: 'GGKU3/WS/P2/0107', availability: false, width: 293, height: 1515 },
-                { id: 20, name: 'GGKU3/WS/P2/0108', availability: false, width: 370, height: 1515 },
-                { id: 21, name: 'GGKU3/WS/P2/0109', availability: false, width: 445, height: 1515 },
-                { id: 22, name: 'GGKU3/WS/P2/0110', availability: false, width: 523, height: 1515 },
-                { id: 23, name: 'GGKU3/WS/P2/0111', availability: false, width: 600, height: 1515 },
-                { id: 24, name: 'GGKU3/WS/P2/0112', availability: false, width: 675, height: 1515 },
-            ];
+            //this._positions = [
+            //    { id: 1, name: 'GGKU3/WS/P2/087', availability: false, width: 664, height: 1185 },
+            //    { id: 2, name: 'GGKU3/WS/P2/088', availability: false, width: 664, height: 1260 },
+            //    { id: 3, name: 'GGKU3/WS/P2/089', availability: false, width: 664, height: 1340 },
+            //    { id: 4, name: 'GGKU3/WS/P2/090', availability: false, width: 664, height: 1415 },
+            //    { id: 5, name: 'GGKU3/WS/P2/091', availability: false, width: 570, height: 1415 },
+            //    { id: 6, name: 'GGKU3/WS/P2/092', availability: false, width: 570, height: 1340 },
+            //    { id: 7, name: 'GGKU3/WS/P2/093', availability: false, width: 570, height: 1260 },
+            //    { id: 8, name: 'GGKU3/WS/P2/094', availability: false, width: 570, height: 1185 },
+            //    { id: 9, name: 'GGKU3/WS/P2/095', availability: false, width: 470, height: 1185 },
+            //    { id: 10, name: 'GGKU3/WS/P2/098', availability: false, width: 470, height: 1415 },
+            //    { id: 11, name: 'GGKU3/WS/P2/099', availability: true, width: 360, height: 1415 },
+            //    { id: 12, name: 'GGKU3/WS/P2/0100', availability: false, width: 360, height: 1340 },
+            //    { id: 13, name: 'GGKU3/WS/P2/0101', availability: false, width: 360, height: 1260 },
+            //    { id: 14, name: 'GGKU3/WS/P2/0102', availability: false, width: 360, height: 1185 },
+            //    { id: 15, name: 'GGKU3/WS/P2/0103', availability: false, width: 265, height: 1185 },
+            //    { id: 16, name: 'GGKU3/WS/P2/0104', availability: false, width: 265, height: 1260 },
+            //    { id: 17, name: 'GGKU3/WS/P2/0105', availability: false, width: 265, height: 1340 },
+            //    { id: 18, name: 'GGKU3/WS/P2/0106', availability: false, width: 265, height: 1415 },
+            //    { id: 19, name: 'GGKU3/WS/P2/0107', availability: false, width: 293, height: 1515 },
+            //    { id: 20, name: 'GGKU3/WS/P2/0108', availability: false, width: 370, height: 1515 },
+            //    { id: 21, name: 'GGKU3/WS/P2/0109', availability: false, width: 445, height: 1515 },
+            //    { id: 22, name: 'GGKU3/WS/P2/0110', availability: false, width: 523, height: 1515 },
+            //    { id: 23, name: 'GGKU3/WS/P2/0111', availability: false, width: 600, height: 1515 },
+            //    { id: 24, name: 'GGKU3/WS/P2/0112', availability: false, width: 675, height: 1515 },
+            //];
         },
 
         _imageLoaded: function (shape) {
@@ -127,38 +127,38 @@ define(function (require) {
             //    $('#mouseposition').text("pageX: " + e.pageX + " pageY: " + e.pageY + ", clientX: " + e.clientX + " clientY: " + e.clientY + ", screenX: " + e.screenX + " screenY: " + e.screenY + ", x: " + e.x + " y: " + e.y + ", layerX: " + e.layerX + " layerY: " + e.layerY + ", offsetX: " + e.offsetX + " offsetY: " + e.offsetY);
             //};
 
-            $('#zoomIn').click(function () {
-                var tf = $('#imgfloorplan').css('transform')
-                if (tf) {
-                    var scale = Number(tf.substring(tf.indexOf('(') + 1, tf.indexOf(',')));
-                    if ((scale + 0.5) <= 10) {
-                        $('#imgfloorplan').css('transform', 'scale(' + (scale + 0.5) + ')');
-                    }
-                    else {
-                        $('#imgfloorplan').css('transform', 'scale(' + 10 + ')');
-                    }
-                }
-                self._resize(self);
-            });
+            //$('#zoomIn').click(function () {
+            //    var tf = $('#imgfloorplan').css('transform')
+            //    if (tf) {
+            //        var scale = Number(tf.substring(tf.indexOf('(') + 1, tf.indexOf(',')));
+            //        if ((scale + 0.5) <= 10) {
+            //            $('#imgfloorplan').css('transform', 'scale(' + (scale + 0.5) + ')');
+            //        }
+            //        else {
+            //            $('#imgfloorplan').css('transform', 'scale(' + 10 + ')');
+            //        }
+            //    }
+            //    self._resize(self);
+            //});
 
-            $('#zoomReset').click(function () {
-                $('#imgfloorplan').css('transform', 'scale(1)');
-                self._resize(self);
-            });
+            //$('#zoomReset').click(function () {
+            //    $('#imgfloorplan').css('transform', 'scale(1)');
+            //    self._resize(self);
+            //});
 
-            $('#zoomOut').click(function () {
-                var tf = $('#imgfloorplan').css('transform')
-                if (tf) {
-                    var scale = Number(tf.substring(tf.indexOf('(') + 1, tf.indexOf(',')));
-                    if ((scale - 0.5) > 0 && (scale - 0.5) <= 10) {
-                        $('#imgfloorplan').css('transform', 'scale(' + (scale - 0.5) + ')');
-                    }
-                    else {
-                        $('#imgfloorplan').css('transform', 'scale(' + 0.5 + ')');
-                    }
-                }
-                self._resize(self);
-            });
+            //$('#zoomOut').click(function () {
+            //    var tf = $('#imgfloorplan').css('transform')
+            //    if (tf) {
+            //        var scale = Number(tf.substring(tf.indexOf('(') + 1, tf.indexOf(',')));
+            //        if ((scale - 0.5) > 0 && (scale - 0.5) <= 10) {
+            //            $('#imgfloorplan').css('transform', 'scale(' + (scale - 0.5) + ')');
+            //        }
+            //        else {
+            //            $('#imgfloorplan').css('transform', 'scale(' + 0.5 + ')');
+            //        }
+            //    }
+            //    self._resize(self);
+            //});
         },
 
         _resize: function (x, y) {
@@ -169,7 +169,7 @@ define(function (require) {
             this._setRendererSize();
             var image = this._getImage();
             var rv = this._getResponsiveValue(image.width), rvpx = (rv * 10), r = (rvpx / 2);
-            var positions = JSON.parse(JSON.stringify(this._positions));
+            var positions = this._getPositions();
             Two.Utils.each(positions, function (pos, index, parent) {
                 pos = _.extend(pos, self._rePositionShape(pos));;
                 self._drawRectangle(pos.width, pos.height, rv * 4, rv * 4, null, pos.availability === true ? '#ff8533' : self._colors.Emerald, 'transparent');
@@ -192,6 +192,24 @@ define(function (require) {
             this._two.add(this._group);
             this._two.update();
             //this._group.translation.set(this._two.width / 2, this._two.height / 2);
+        },
+
+        _getPositions: function () {
+            var self = this;
+            var positions = [];
+            $.ajax({
+                dataType: "json",
+                url: "/Data/GetAvailablePlaces",
+                async: false,
+                success: function (response) {
+                    $.each(response.Data, function(i, e){
+                        positions.push({
+                            id: e.ID, name: e.Name, availability: e.Availability ? true : false, width: e.X_Value, height: e.Y_Value
+                        });
+                    });
+                }
+            });
+            return positions;
         },
 
         _buildPath: function (paths, source, destination) {
