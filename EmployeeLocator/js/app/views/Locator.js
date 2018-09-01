@@ -131,26 +131,33 @@ define(function (require) {
                 var tf = $('#imgfloorplan').css('transform')
                 if (tf) {
                     var scale = Number(tf.substring(tf.indexOf('(') + 1, tf.indexOf(',')));
-                    if (scale <= 10) {
+                    if ((scale + 0.5) <= 10) {
                         $('#imgfloorplan').css('transform', 'scale(' + (scale + 0.5) + ')');
                     }
                     else {
                         $('#imgfloorplan').css('transform', 'scale(' + 10 + ')');
                     }
                 }
+                self._resize(self);
+            });
+
+            $('#zoomReset').click(function () {
+                $('#imgfloorplan').css('transform', 'scale(1)');
+                self._resize(self);
             });
 
             $('#zoomOut').click(function () {
                 var tf = $('#imgfloorplan').css('transform')
                 if (tf) {
                     var scale = Number(tf.substring(tf.indexOf('(') + 1, tf.indexOf(',')));
-                    if (scale <= 10) {
+                    if ((scale - 0.5) > 0 && (scale - 0.5) <= 10) {
                         $('#imgfloorplan').css('transform', 'scale(' + (scale - 0.5) + ')');
                     }
                     else {
                         $('#imgfloorplan').css('transform', 'scale(' + 0.5 + ')');
                     }
                 }
+                self._resize(self);
             });
         },
 
@@ -163,10 +170,8 @@ define(function (require) {
             var positions = JSON.parse(JSON.stringify(this._positions));
             Two.Utils.each(positions, function (pos, index, parent) {
                 pos = self._rePositionShape(pos);
+                self._drawRectangle(pos.width, pos.height, pos.width, pos.height, null, self._colors.Emerald, self._colors.Emerald);
             });
-
-
-
             var image = this._getImage();
             var rv = this._getResponsiveValue(image.width), rvpx = (rv * 10), r = (rvpx / 2);
             var source = this._findEmployee(1718);

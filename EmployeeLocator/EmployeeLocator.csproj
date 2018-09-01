@@ -164,6 +164,7 @@
     <Content Include="img\GGK_WaveRock_FloorPlan_Phase-II.jpg" />
     <Content Include="img\location.svg" />
     <Content Include="img\logo2.png" />
+    <Content Include="img\ZoomReset.png" />
     <Content Include="js\app\views\Locator.js" />
     <Content Include="js\lib\events.js" />
     <Content Include="js\lib\two.js" />

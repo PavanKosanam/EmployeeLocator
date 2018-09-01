@@ -3,9 +3,11 @@
     <img id="imgfloorplan" src="../../img/GGK_WaveRock_FloorPlan_Phase-II.jpg" alt="Floor Plan" />
     <div class="blocksContainer">
         <div id="mouseposition" style="position: fixed; background-color: white;"></div>
-        <img id="zoomIn" src="../../img/ZoomIn.png" alt="Zoom In" style="position: fixed;bottom: 85px;right: 40px;" width="40" height="40" />
-        <img id="zoomIn" src="../../img/ZoomOut.png" alt="Zoom Out" style="position: fixed;bottom: 40px;right: 40px;" width="40" height="40" />
-        <div id="zoomIn" style="position: fixed; background-color: white;"></div>
+        <div id="zoomControls" style="display:none;">
+            <img id="zoomIn" src="../../img/ZoomIn.png" alt="Zoom In" style="cursor:pointer; position: fixed;bottom: 125px;right: 40px;" width="40" height="40" />
+            <img id="zoomReset" src="../../img/ZoomReset.png" alt="Zoom Reset" style="cursor:pointer;position: fixed;bottom: 85px;right: 40px;" width="40" height="40" />
+            <img id="zoomOut" src="../../img/ZoomOut.png" alt="Zoom Out" style="cursor:pointer;position: fixed;bottom: 40px;right: 40px;" width="40" height="40" />
+        </div>
         <div id="floorplan"></div>
     </div>
 </div>
