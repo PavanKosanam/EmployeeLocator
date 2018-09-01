@@ -507,6 +507,7 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
         </ComplexType>
         <ComplexType Name="GetEmpDetails_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="253" />
           <Property Type="String" Name="FirstName" Nullable="true" MaxLength="126" />
           <Property Type="String" Name="LastName" Nullable="true" MaxLength="126" />
           <Property Type="Int32" Name="ManagerID" Nullable="true" />
@@ -666,6 +667,7 @@ warning 6002: The table/view 'FloorWalker.dbo.Path' does not have a primary key 
             <ResultMapping>
               <ComplexTypeMapping TypeName="FloorWalkerModel.GetEmpDetails_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />

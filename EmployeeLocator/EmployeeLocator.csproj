@@ -176,6 +176,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="pics\Meeting.jpg" />
+    <Content Include="pics\Meeting50.jpg" />
+    <Content Include="pics\Meeting_Room.jpg" />
+    <Content Include="pics\Meeting_Room50.jpg" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />

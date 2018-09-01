@@ -76,7 +76,7 @@ define(function (require) {
         urlExists = function (url) {
             var http = new XMLHttpRequest();
             try {
-                http.open('HEAD', url, false);
+                http.open('HEAD', url+'.jpg', false);
                 http.send();
             } catch (e) {
             }
@@ -85,7 +85,7 @@ define(function (require) {
 
         createEmployeeModel = function (x) {
             var fn = x.FirstName ? x.FirstName.toLowerCase().replace(/[^A-Z0-9]+/ig, '') : null, ln = x.LastName ? x.LastName.toLowerCase().replace(/[^A-Z0-9]+/ig, '') : null;
-            var pic = fn && ln ? urlExists('/pics/' + fn + '_' + ln + '.jpg') ? fn + '_' + ln + '.jpg' : (x.FirstName.endsWith('a') || x.FirstName.endsWith('i')) ? 'roja_mule.jpg' : 'pavan_kosanam.jpg' : 'Meeting_Room.jpg';
+            var pic = fn ? urlExists('/pics/' + fn + '_' + ln) ? fn + '_' + ln : (x.FirstName.endsWith('a') || x.FirstName.endsWith('i')) ? 'roja_mule' : 'pavan_kosanam' : 'Meeting';
             return {
                 id: x.ID,
                 name: x.Name,
@@ -106,6 +106,23 @@ define(function (require) {
                 width: x.X_Value,
                 height: x.Y_Value
             };
+        },
+
+        findByName = function (searchKey) {
+            var deferred = $.Deferred(), results;
+            $.ajax({
+                dataType: "json",
+                url: "/Data/FindPersonOrLocationResult",
+                data: { searchTerm: searchKey },
+                success: function (response) {
+                    results = [];
+                    $.each(response.Data, function (i, x) {
+                        results.push(createEmployeeModel(x));
+                    });
+                    deferred.resolve(results);
+                }
+            });
+            return deferred.promise();
         },
 
         findByName = function (searchKey) {
