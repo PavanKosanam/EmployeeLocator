@@ -504,9 +504,68 @@ define(function (require) {
         },
 
         _findEmployee: function (employeeId) {
-            var employee = _.clone(_.first(_.filter(this._employeeList, function (emp) { return emp.id === employeeId; })));
-            if (employee) _.extend(employee, this._rePositionShape(employee));
+            var employee = {};
+            var employees = [];
+            var self = this;
+            $.ajax({
+                dataType: "json",
+                url: "/Data/FindPersonOrLocationById",
+                async: false,
+                data: { Id: employeeId },
+                success: function (response) {
+                    $.each(response.Data, function (i, x) {
+                        employees.push(self.createEmployeeModel(x));
+                    });
+                    var l = employees.length;
+                    for (var i = 0; i < l; i = i + 1) {
+                        if (employees[i].id === employeeId) {
+                            employee = employees[i];
+                            break;
+                        }
+                    }
+                }
+            });
+            if (employee) _.extend(employee, self._rePositionShape(employee));
             return employee;
+
+            //var employee = _.clone(_.first(_.filter(this._employeeList, function (emp) { return emp.id === employeeId; })));
+            //if (employee) _.extend(employee, this._rePositionShape(employee));
+            //return employee;
+        },
+
+        createEmployeeModel: function (x) {
+            var fn = x.FirstName ? x.FirstName.toLowerCase().replace(/[^A-Z0-9]+/ig, '') : null, ln = x.LastName ? x.LastName.toLowerCase().replace(/[^A-Z0-9]+/ig, '') : null;
+            var pic = fn ? this.urlExists('/pics/' + fn + '_' + ln) ? fn + '_' + ln : (x.FirstName.endsWith('a') || x.FirstName.endsWith('i')) ? 'roja_mule' : 'pavan_kosanam' : 'Meeting';
+            return {
+                id: x.ID,
+                name: x.Name,
+                firstName: x.FirstName,
+                lastName: x.LastName,
+                managerId: x.ManagerID,
+                managerName: x.ManagerName,
+                reports: x.Reports,
+                title: x.Title,
+                department: x.Department,
+                cellPhone: x.CellPhone,
+                officePhone: x.OfficePhone,
+                email: x.EmailID,
+                city: x.City,
+                pic: pic,
+                twitterId: x.TwitterID,
+                blog: x.Blog,
+                width: x.X_Value,
+                height: x.Y_Value
+            };
+        },
+
+        urlExists: function (url) {
+            var http = new XMLHttpRequest();
+            try {
+                http.open('HEAD', url + '.jpg', false);
+                http.send();
+            } catch (e) {
+            }
+            return http.status != 404;
         },
 
         _rePositionShape: function (shape) {
