@@ -20,7 +20,7 @@ define(function (require) {
 
         initialize: function (options) {
             this._id = options.id;
-            this._colors = { Turquoise: '#1abc9c', GreenSea: '#16a085', Emerald: '#2ecc71', Nephritis: '#27ae60', PeterRiver: '#3498db', BelizeHole: '#2980b9', Amethyst: '#9b59b6', Wisteria: '#8e44ad', WetAsphalt: '#34495e', MidnightBlue: '#2c3e50', Sunflower: '#f1c40f', Orange: '#f39c12', Carrot: '#e67e22', Pumpkin: '#d35400', Sunred: '#e74c3c', SoftPink: '#f02075', GgkOrange: '#D35106', GgkBlue: '#00628b' };
+            this._colors = { Turquoise: '#1abc9c', GreenSea: '#16a085', Emerald: '#2ecc71', Nephritis: '#27ae60', PeterRiver: '#0099ff', BelizeHole: '#2980b9', Amethyst: '#9b59b6', Wisteria: '#8e44ad', WetAsphalt: '#34495e', MidnightBlue: '#2c3e50', Sunflower: '#f1c40f', Orange: '#f39c12', Carrot: '#e67e22', Pumpkin: '#d35400', Sunred: '#e74c3c', SoftPink: '#f02075', GgkOrange: '#D35106', GgkBlue: '#00628b', };//'#3498db'
             this._imageDimensions = {
                 waverock: {
                     phaseI: { width: 3701, height: 2929 },
@@ -76,30 +76,30 @@ define(function (require) {
             ];
 
             this._positions = [
-                { id: 1, name: 'GGKU3/WS/P2/087', availability: true, width: 664, height: 1185 },
-                { id: 2, name: 'GGKU3/WS/P2/088', availability: true, width: 664, height: 1260 },
-                { id: 3, name: 'GGKU3/WS/P2/089', availability: true, width: 664, height: 1340 },
-                { id: 4, name: 'GGKU3/WS/P2/090', availability: true, width: 664, height: 1415 },
-                { id: 5, name: 'GGKU3/WS/P2/091', availability: true, width: 570, height: 1415 },
-                { id: 6, name: 'GGKU3/WS/P2/092', availability: true, width: 570, height: 1340 },
-                { id: 7, name: 'GGKU3/WS/P2/093', availability: true, width: 570, height: 1260 },
-                { id: 8, name: 'GGKU3/WS/P2/094', availability: true, width: 570, height: 1185 },
-                { id: 9, name: 'GGKU3/WS/P2/095', availability: true, width: 470, height: 1185 },
-                { id: 10, name: 'GGKU3/WS/P2/098', availability: true, width: 470, height: 1415 },
-                { id: 11, name: 'GGKU3/WS/P2/099', availability: false, width: 360, height: 1415 },
-                { id: 12, name: 'GGKU3/WS/P2/0100', availability: true, width: 360, height: 1340 },
-                { id: 13, name: 'GGKU3/WS/P2/0101', availability: true, width: 360, height: 1260 },
-                { id: 14, name: 'GGKU3/WS/P2/0102', availability: true, width: 360, height: 1185 },
-                { id: 15, name: 'GGKU3/WS/P2/0103', availability: true, width: 265, height: 1185 },
-                { id: 16, name: 'GGKU3/WS/P2/0104', availability: true, width: 265, height: 1260 },
-                { id: 17, name: 'GGKU3/WS/P2/0105', availability: true, width: 265, height: 1340 },
-                { id: 18, name: 'GGKU3/WS/P2/0106', availability: true, width: 265, height: 1415 },
-                { id: 19, name: 'GGKU3/WS/P2/0107', availability: true, width: 293, height: 1515 },
-                { id: 20, name: 'GGKU3/WS/P2/0108', availability: true, width: 370, height: 1515 },
-                { id: 21, name: 'GGKU3/WS/P2/0109', availability: true, width: 445, height: 1515 },
-                { id: 22, name: 'GGKU3/WS/P2/0110', availability: true, width: 523, height: 1515 },
-                { id: 23, name: 'GGKU3/WS/P2/0111', availability: true, width: 600, height: 1515 },
-                { id: 24, name: 'GGKU3/WS/P2/0112', availability: true, width: 675, height: 1515 },
+                { id: 1, name: 'GGKU3/WS/P2/087', availability: false, width: 664, height: 1185 },
+                { id: 2, name: 'GGKU3/WS/P2/088', availability: false, width: 664, height: 1260 },
+                { id: 3, name: 'GGKU3/WS/P2/089', availability: false, width: 664, height: 1340 },
+                { id: 4, name: 'GGKU3/WS/P2/090', availability: false, width: 664, height: 1415 },
+                { id: 5, name: 'GGKU3/WS/P2/091', availability: false, width: 570, height: 1415 },
+                { id: 6, name: 'GGKU3/WS/P2/092', availability: false, width: 570, height: 1340 },
+                { id: 7, name: 'GGKU3/WS/P2/093', availability: false, width: 570, height: 1260 },
+                { id: 8, name: 'GGKU3/WS/P2/094', availability: false, width: 570, height: 1185 },
+                { id: 9, name: 'GGKU3/WS/P2/095', availability: false, width: 470, height: 1185 },
+                { id: 10, name: 'GGKU3/WS/P2/098', availability: false, width: 470, height: 1415 },
+                { id: 11, name: 'GGKU3/WS/P2/099', availability: true, width: 360, height: 1415 },
+                { id: 12, name: 'GGKU3/WS/P2/0100', availability: false, width: 360, height: 1340 },
+                { id: 13, name: 'GGKU3/WS/P2/0101', availability: false, width: 360, height: 1260 },
+                { id: 14, name: 'GGKU3/WS/P2/0102', availability: false, width: 360, height: 1185 },
+                { id: 15, name: 'GGKU3/WS/P2/0103', availability: false, width: 265, height: 1185 },
+                { id: 16, name: 'GGKU3/WS/P2/0104', availability: false, width: 265, height: 1260 },
+                { id: 17, name: 'GGKU3/WS/P2/0105', availability: false, width: 265, height: 1340 },
+                { id: 18, name: 'GGKU3/WS/P2/0106', availability: false, width: 265, height: 1415 },
+                { id: 19, name: 'GGKU3/WS/P2/0107', availability: false, width: 293, height: 1515 },
+                { id: 20, name: 'GGKU3/WS/P2/0108', availability: false, width: 370, height: 1515 },
+                { id: 21, name: 'GGKU3/WS/P2/0109', availability: false, width: 445, height: 1515 },
+                { id: 22, name: 'GGKU3/WS/P2/0110', availability: false, width: 523, height: 1515 },
+                { id: 23, name: 'GGKU3/WS/P2/0111', availability: false, width: 600, height: 1515 },
+                { id: 24, name: 'GGKU3/WS/P2/0112', availability: false, width: 675, height: 1515 },
             ];
         },
 
@@ -167,13 +167,13 @@ define(function (require) {
             var self = this;
             this._destroyAll();
             this._setRendererSize();
-            var positions = JSON.parse(JSON.stringify(this._positions));
-            Two.Utils.each(positions, function (pos, index, parent) {
-                pos = self._rePositionShape(pos);
-                self._drawRectangle(pos.width, pos.height, pos.width, pos.height, null, self._colors.Emerald, self._colors.Emerald);
-            });
             var image = this._getImage();
             var rv = this._getResponsiveValue(image.width), rvpx = (rv * 10), r = (rvpx / 2);
+            var positions = JSON.parse(JSON.stringify(this._positions));
+            Two.Utils.each(positions, function (pos, index, parent) {
+                pos = _.extend(pos, self._rePositionShape(pos));;
+                self._drawRectangle(pos.width, pos.height, rv * 4, rv * 4, null, pos.availability === true ? '#ff8533' : self._colors.Emerald, 'transparent');
+            });
             var source = this._findEmployee(1718);
             var destination = this._findEmployee(targetEmpId);//28//715
             if (!source || !destination) return;
@@ -185,7 +185,7 @@ define(function (require) {
             this._buildPath(rePosPaths, source, destination);
             //this._drawCurve(this._drawPoint(source.width, source.height), this._drawPoint(destination.width, destination.height), 'transparent', this._colors.PeterRiver);
             //this._drawLine(source.width, source.height, destination.width, destination.height, 'transparent', this._colors.PeterRiver);
-            this._drawCircle(source.width, source.height, (r - rv), this._colors.Emerald, this._colors.Emerald);
+            this._drawCircle(source.width, source.height, (r - rv), this._colors.Sunflower, this._colors.Sunflower);
             this._insertText(source.name, source.width, (image.height - source.height) > 100 ? source.height + r : source.height - r, this._colors.SoftPink, null, { 'background-color': 'white' });
             this._drawCircle(destination.width, destination.height, (r - rv), this._colors.Sunred, this._colors.Sunred);
             this._insertText(destination.name, destination.width, (image.height - destination.height) > 100 ? destination.height + r : destination.height - r, this._colors.SoftPink);
@@ -652,7 +652,7 @@ define(function (require) {
             }
             rectangle.fill = fill;
             rectangle.stroke = stroke;
-            rectangle.opacity = 0.4;
+            rectangle.opacity = 0.6;
             this._setLineWidth(rectangle);
             this._addToGroup(rectangle);
         },
@@ -664,7 +664,7 @@ define(function (require) {
             }
             circle.fill = fill;
             circle.stroke = stroke;
-            circle.opacity = 0.4;
+            circle.opacity = 0.6;
             this._setLineWidth(circle);
             this._addToGroup(circle);
         },
