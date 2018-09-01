@@ -103,6 +103,20 @@ define(function (require) {
             ];
         },
 
+        _getPositions: function () {
+            var self = this;
+            var positions = [];
+            $.ajax({
+                dataType: "json",
+                url: "/Data/GetAvailablePlaces",
+                async: false,
+                success: function (response) {
+                    positions = response.Data;
+                }
+            });
+            return positions;
+        },
+
         _imageLoaded: function (shape) {
             var self = this;
             var elem = document.getElementById('floorplan');
@@ -167,7 +181,7 @@ define(function (require) {
             var self = this;
             this._destroyAll();
             this._setRendererSize();
-            var positions = JSON.parse(JSON.stringify(this._positions));
+            var positions = this._getPositions();
             Two.Utils.each(positions, function (pos, index, parent) {
                 pos = self._rePositionShape(pos);
                 self._drawRectangle(pos.width, pos.height, pos.width, pos.height, null, self._colors.Emerald, self._colors.Emerald);
