@@ -180,8 +180,8 @@
     <Content Include="pics\Meeting50.jpg" />
     <Content Include="pics\Meeting_Room.jpg" />
     <Content Include="pics\Meeting_Room50.jpg" />
-    <Content Include="pics\ZoomIn.png" />
-    <Content Include="pics\ZoomOut.png" />
+    <Content Include="img\ZoomIn.png" />
+    <Content Include="img\ZoomOut.png" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
